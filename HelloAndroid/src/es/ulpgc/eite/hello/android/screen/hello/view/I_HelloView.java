@@ -10,4 +10,5 @@ public interface I_HelloView {
     void showMessage();
     void setData(HelloData data);
     void setListener();
+    void setListenerMoreProducts();
 }

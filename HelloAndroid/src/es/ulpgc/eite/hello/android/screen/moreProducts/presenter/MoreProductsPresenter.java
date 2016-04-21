@@ -18,6 +18,7 @@ public class MoreProductsPresenter extends AndroidScreenPresenter implements I_M
     public void createScreen() {
         debug("createScreen");
         getMoreProductsView().setLayout();
+
     }
 
     @Override

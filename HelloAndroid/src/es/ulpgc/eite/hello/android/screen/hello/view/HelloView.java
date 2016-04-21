@@ -65,4 +65,19 @@ public class HelloView extends AndroidScreenView implements I_HelloView {
             }
         });
     }
+
+    @Override
+    public void setListenerMoreProducts() {
+        debug("setListener");
+
+        Button scrBtn = (Button) findViewById(R.id.moreProducts);
+        scrBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                getHelloPresenter().buttonClickedMore();
+            }
+        });
+
+    }
 }

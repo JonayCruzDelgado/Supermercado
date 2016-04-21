@@ -14,6 +14,9 @@ import es.ulpgc.eite.hello.android.screen.hello.data.HelloData;
 import es.ulpgc.eite.hello.android.screen.hello.model.I_HelloModel;
 import es.ulpgc.eite.hello.android.screen.hello.state.HelloState;
 import es.ulpgc.eite.hello.android.screen.hello.view.I_HelloView;
+import es.ulpgc.eite.hello.android.screen.moreProducts.data.MoreProductsData;
+import es.ulpgc.eite.hello.android.screen.moreProducts.state.MoreProductsState;
+import es.ulpgc.eite.hello.android.screen.moreProducts.view.MoreProductsView;
 
 public class HelloPresenter
         extends AndroidScreenPresenter implements I_HelloPresenter, I_ScreenObserver {
@@ -44,13 +47,21 @@ public class HelloPresenter
         getHelloView().showMessage();
         startNextScreenWithObserver(this, HelloMediatorCode.CLICK);
     }
+    @Override
+    public void buttonClickedMore(){
+        debug("buttonClicked");
 
+        setBtnClicked(true);
+        getHelloView().showMessage();
+        startNextScreenWithObserver(this, HelloMediatorCode.CLIC_more);
+    }
     @Override
     public void createScreen() {
         debug("createScreen");
 
         getHelloView().setLayout();
         getHelloView().setListener();
+        getHelloView().setListenerMoreProducts();
         getHelloView().hideMessage();
         setBtnClicked(false);
         getHelloModel().setData(new HelloData(
@@ -121,6 +132,11 @@ public class HelloPresenter
         if(view.equals(ByeView.class) && code == HelloMediatorCode.CLICK){
             ByeState state = new ByeState();
             state.setData(new ByeData(I_ByeModel.TXT_MSG, I_ByeModel.TXT_BTN));
+            return state;
+        }
+        if(view.equals(MoreProductsView.class) && code == HelloMediatorCode.CLIC_more){
+            MoreProductsState state = new MoreProductsState();
+            state.setData(new MoreProductsData());
             return state;
         }
 

@@ -27,7 +27,11 @@
             android:configChanges="orientation|keyboardHidden|screenSize">
 
         </activity>
+        <activity
+                android:name=".screen.moreProducts.view.MoreProductsView"
+                android:configChanges="orientation|keyboardHidden|screenSize">
 
+        </activity>
     </application>
 
 </manifest>
