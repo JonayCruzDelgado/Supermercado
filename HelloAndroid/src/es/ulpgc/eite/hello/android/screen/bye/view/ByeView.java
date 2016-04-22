@@ -9,17 +9,18 @@ import es.ulpgc.eite.hello.android.R;
 import es.ulpgc.eite.hello.android.screen.bye.data.ByeData;
 import es.ulpgc.eite.hello.android.screen.bye.presenter.I_ByePresenter;
 
-public class ByeView extends AndroidScreenView implements I_ByeView {
+public abstract class ByeView extends AndroidScreenView implements I_ByeView {
 
     private I_ByePresenter getByePresenter(){
         return (I_ByePresenter) getScreenPresenter();
     }
 
+    public abstract int getLayout();
     @Override
     public void setLayout(){
         debug("setLayout");
 
-        setContentView(R.layout.bye_view);
+        setContentView(getLayout());
     }
 
     @Override

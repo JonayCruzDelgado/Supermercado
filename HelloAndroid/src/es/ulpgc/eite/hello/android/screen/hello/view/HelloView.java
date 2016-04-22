@@ -9,17 +9,18 @@ import es.ulpgc.eite.hello.android.R;
 import es.ulpgc.eite.hello.android.screen.hello.data.HelloData;
 import es.ulpgc.eite.hello.android.screen.hello.presenter.I_HelloPresenter;
 
-public class HelloView extends AndroidScreenView implements I_HelloView {
+public abstract class HelloView extends AndroidScreenView implements I_HelloView {
 
     private I_HelloPresenter getHelloPresenter(){
         return (I_HelloPresenter) getScreenPresenter();
     }
 
+    public abstract int getLayout();
     @Override
     public void setLayout(){
         debug("setLayout");
 
-        setContentView(R.layout.hello_view);
+        setContentView(getLayout());
     }
 
     @Override

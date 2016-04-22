@@ -8,7 +8,7 @@ import es.ulpgc.eite.hello.android.screen.moreProducts.view.I_MoreProductsView;
 /**
  * Created by Jonay on 21/04/2016.
  */
-public class MoreProductsPresenter extends AndroidScreenPresenter implements I_MoreProductsPresenter {
+public abstract class MoreProductsPresenter extends AndroidScreenPresenter implements I_MoreProductsPresenter {
 
     private I_MoreProductsView getMoreProductsView() {
      return (I_MoreProductsView)getScreenView();
@@ -35,7 +35,11 @@ public class MoreProductsPresenter extends AndroidScreenPresenter implements I_M
     public void pauseScreen() {
 
     }
+    public void changeRotation(int code){
+        debug("changeRotation", "code", code);
 
+        startNextScreenWithFinish(code, true);
+    }
     @Override
     public void rotateScreen() {
 

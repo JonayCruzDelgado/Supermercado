@@ -18,7 +18,7 @@ import es.ulpgc.eite.hello.android.screen.moreProducts.data.MoreProductsData;
 import es.ulpgc.eite.hello.android.screen.moreProducts.state.MoreProductsState;
 import es.ulpgc.eite.hello.android.screen.moreProducts.view.MoreProductsView;
 
-public class HelloPresenter
+public abstract class HelloPresenter
         extends AndroidScreenPresenter implements I_HelloPresenter, I_ScreenObserver {
 
     private Boolean _btnClicked;
@@ -54,6 +54,11 @@ public class HelloPresenter
         setBtnClicked(true);
         getHelloView().showMessage();
         startNextScreenWithObserver(this, HelloMediatorCode.CLIC_more);
+    }
+    public void changeRotation(int code){
+        debug("changeRotation", "code", code);
+
+        startNextScreenWithFinish(code, true);
     }
     @Override
     public void createScreen() {

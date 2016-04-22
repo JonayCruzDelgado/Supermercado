@@ -10,7 +10,7 @@ import es.ulpgc.eite.hello.android.screen.bye.state.ByeState;
 import es.ulpgc.eite.hello.android.screen.bye.view.I_ByeView;
 import es.ulpgc.eite.hello.android.screen.hello.view.HelloView;
 
-public class ByePresenter
+public abstract class ByePresenter
         extends AndroidScreenPresenter implements I_ByePresenter {
 
 
@@ -40,6 +40,11 @@ public class ByePresenter
 
     }
 
+    public void changeRotation(int code){
+        debug("changeRotation", "code", code);
+
+        startNextScreenWithFinish(code, true);
+    }
     @Override
     public void backScreen() {
 

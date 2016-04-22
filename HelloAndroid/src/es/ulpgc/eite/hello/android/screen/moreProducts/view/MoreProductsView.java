@@ -6,12 +6,14 @@ import es.ulpgc.eite.hello.android.R;
 /**
  * Created by Jonay on 21/04/2016.
  */
-public class MoreProductsView extends AndroidScreenView implements I_MoreProductsView {
+public abstract class MoreProductsView extends AndroidScreenView implements I_MoreProductsView {
+
+    public abstract int getLayout();
 
     @Override
     public void setLayout() {
         debug("setLayout");
-        setContentView(R.layout.more_products_view);
+        setContentView(getLayout());
     }
 
     @Override
