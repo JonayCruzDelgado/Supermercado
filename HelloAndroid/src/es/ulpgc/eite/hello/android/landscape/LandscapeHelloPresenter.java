@@ -11,6 +11,6 @@ public class LandscapeHelloPresenter extends HelloPresenter {
     public void rotateScreen() {
         debug("rotateScreen");
 
-        changeRotation(HelloMediatorCode.hello_landscape);
+        changeRotation(HelloMediatorCode.hello_portrait);
     }
 }

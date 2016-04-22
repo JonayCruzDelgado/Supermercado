@@ -5,7 +5,9 @@ import es.ulpgc.eite.framework.android.AndroidScreenPresenter;
 import es.ulpgc.eite.framework.core.screen.I_ScreenObserver;
 import es.ulpgc.eite.framework.core.screen.I_ScreenState;
 import es.ulpgc.eite.framework.core.screen.I_ScreenView;
+import es.ulpgc.eite.hello.android.landscape.LandscapeHelloView;
 import es.ulpgc.eite.hello.android.mediator.HelloMediatorCode;
+import es.ulpgc.eite.hello.android.portrait.PortraitHelloView;
 import es.ulpgc.eite.hello.android.screen.bye.data.ByeData;
 import es.ulpgc.eite.hello.android.screen.bye.model.I_ByeModel;
 import es.ulpgc.eite.hello.android.screen.bye.state.ByeState;
@@ -142,6 +144,15 @@ public abstract class HelloPresenter
         if(view.equals(MoreProductsView.class) && code == HelloMediatorCode.CLIC_more){
             MoreProductsState state = new MoreProductsState();
             state.setData(new MoreProductsData());
+            return state;
+        }
+        if((view.equals(LandscapeHelloView.class)
+                && code == HelloMediatorCode.hello_landscape)
+                || (view.equals(PortraitHelloView.class)
+                && code == HelloMediatorCode.hello_portrait)){
+            HelloState state = new HelloState();
+            state.setData(getHelloModel().getData());
+            state.setBtnClicked(getBtnClicked());
             return state;
         }
 

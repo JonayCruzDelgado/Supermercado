@@ -11,6 +11,6 @@ public class PortraitMoreProductsPresenter extends MoreProductsPresenter {
     public void rotateScreen() {
         debug("rotateScreen");
 
-        changeRotation(HelloMediatorCode.more_portrait);
+        changeRotation(HelloMediatorCode.more_landscape);
     }
 }

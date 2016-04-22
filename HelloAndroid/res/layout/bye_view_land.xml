@@ -4,10 +4,20 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <Button
+
+    <TextView
+            android:id="@+id/byeMsgTextView"
+            style="@style/WhiteStyle"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/say_bye_button"
+            android:background="@drawable/custom_button_white"
+            android:text="@string/bye_message" android:layout_gravity="center_horizontal"/>
+
+    <Button
+            android:id="@+id/sayByeButton"
             style="@style/GreenStyle"
-            android:id="@+id/sayByeButton" android:layout_gravity="center_horizontal"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/say_bye_button" android:layout_gravity="center_horizontal"/>
 </LinearLayout>

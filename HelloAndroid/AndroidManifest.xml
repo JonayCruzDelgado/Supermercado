@@ -11,7 +11,7 @@
 
 
         <activity
-            android:name=".screen.hello.view.HelloView"
+            android:name=".portrait.PortraitHelloView"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,17 +20,31 @@
             </intent-filter>
         </activity>
 
+        <activity
+                android:name=".landscape.LandscapeHelloView"
+                android:configChanges="orientation|keyboardHidden|screenSize">
+        </activity>
 
 
         <activity
-            android:name=".screen.bye.view.ByeView"
+            android:name=".portrait.PortraitByeView"
             android:configChanges="orientation|keyboardHidden|screenSize">
 
         </activity>
+
         <activity
-                android:name=".screen.moreProducts.view.MoreProductsView"
+                android:name=".landscape.LandscapeByeView"
+                android:configChanges="orientation|keyboardHidden|screenSize">
+        </activity>
+        <activity
+                android:name=".landscape.LandscapeMoreProductsView"
                 android:configChanges="orientation|keyboardHidden|screenSize">
 
+        </activity>
+
+        <activity
+                android:name=".portrait.PortraitMoreProductsView"
+                android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
     </application>
 

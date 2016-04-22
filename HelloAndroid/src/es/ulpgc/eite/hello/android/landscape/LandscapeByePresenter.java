@@ -11,6 +11,6 @@ public class LandscapeByePresenter extends ByePresenter {
     public void rotateScreen() {
         debug("rotateScreen");
 
-        changeRotation(HelloMediatorCode.bye_landscape);
+        changeRotation(HelloMediatorCode.bye_portrait);
     }
 }
