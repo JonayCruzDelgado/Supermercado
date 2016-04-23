@@ -5,6 +5,7 @@ import es.ulpgc.eite.framework.android.AndroidScreenPresenter;
 import es.ulpgc.eite.framework.core.screen.I_ScreenObserver;
 import es.ulpgc.eite.framework.core.screen.I_ScreenState;
 import es.ulpgc.eite.framework.core.screen.I_ScreenView;
+import es.ulpgc.eite.hello.android.landscape.LandscapeByeView;
 import es.ulpgc.eite.hello.android.landscape.LandscapeHelloView;
 import es.ulpgc.eite.hello.android.mediator.HelloMediatorCode;
 import es.ulpgc.eite.hello.android.portrait.PortraitByeView;
@@ -162,6 +163,12 @@ public abstract class HelloPresenter
         debug("getNextState", "clicked", getBtnClicked());
 
         if (view.equals(PortraitByeView.class) && code == HelloMediatorCode.CLICK) {
+
+            ByeState state = new ByeState();
+            state.setData(new ByeData(I_ByeModel.TXT_MSG, I_ByeModel.TXT_BTN));
+            return state;
+        }
+        if (view.equals(LandscapeByeView.class) && code == HelloMediatorCode.CLICK_land) {
 
             ByeState state = new ByeState();
             state.setData(new ByeData(I_ByeModel.TXT_MSG, I_ByeModel.TXT_BTN));

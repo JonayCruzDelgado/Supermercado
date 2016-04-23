@@ -88,7 +88,7 @@ public abstract class ByePresenter
 
                     && code == HelloMediatorCode.CLICK)
                     || (view.equals(LandscapeHelloView.class)
-                    && code == HelloMediatorCode.CLICK)) {
+                    && code == HelloMediatorCode.CLICK_land)) {
 
                 ByeState _state = (ByeState) state;
                 getByeModel().setData(_state.getData());
