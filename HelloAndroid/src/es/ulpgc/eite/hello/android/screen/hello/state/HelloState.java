@@ -7,12 +7,19 @@ public class HelloState implements I_ScreenState {
 
     private HelloData _data;
     private Boolean _btnClicked;
+    private String _presentview;
 
     public HelloState() {
         setData(new HelloData());
         setBtnClicked(false);
     }
+    public String get_presentview() {
+        return _presentview;
+    }
 
+    public void set_presentview(String _presentview) {
+        this._presentview = _presentview;
+    }
     public HelloData getData() {
         return _data;
     }

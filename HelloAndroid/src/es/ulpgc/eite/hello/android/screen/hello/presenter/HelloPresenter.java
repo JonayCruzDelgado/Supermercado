@@ -7,11 +7,11 @@ import es.ulpgc.eite.framework.core.screen.I_ScreenState;
 import es.ulpgc.eite.framework.core.screen.I_ScreenView;
 import es.ulpgc.eite.hello.android.landscape.LandscapeHelloView;
 import es.ulpgc.eite.hello.android.mediator.HelloMediatorCode;
+import es.ulpgc.eite.hello.android.portrait.PortraitByeView;
 import es.ulpgc.eite.hello.android.portrait.PortraitHelloView;
 import es.ulpgc.eite.hello.android.screen.bye.data.ByeData;
 import es.ulpgc.eite.hello.android.screen.bye.model.I_ByeModel;
 import es.ulpgc.eite.hello.android.screen.bye.state.ByeState;
-import es.ulpgc.eite.hello.android.screen.bye.view.ByeView;
 import es.ulpgc.eite.hello.android.screen.hello.data.HelloData;
 import es.ulpgc.eite.hello.android.screen.hello.model.I_HelloModel;
 import es.ulpgc.eite.hello.android.screen.hello.state.HelloState;
@@ -37,31 +37,55 @@ public abstract class HelloPresenter
         return (I_HelloView) getScreenView();
     }
 
-    private I_HelloModel getHelloModel(){
+    private I_HelloModel getHelloModel() {
         return (I_HelloModel) getScreenModel();
     }
 
     @Override
-    public void buttonClicked(){
+    public void buttonClicked() {
         debug("buttonClicked");
 
         setBtnClicked(true);
         getHelloView().showMessage();
-        startNextScreenWithObserver(this, HelloMediatorCode.CLICK);
+        transition();
+
     }
+
+    public void transition() {
+        debug("transition", "pantalla", getScreenView().getClass().getSimpleName());
+        if (getScreenView().getClass().getSimpleName().equalsIgnoreCase("PortraitHelloView")) {
+            startNextScreenWithObserver(this, HelloMediatorCode.CLICK);
+        }
+        if (getScreenView().getClass().getSimpleName().equalsIgnoreCase("LandscapeHelloView")) {
+            startNextScreenWithObserver(this, HelloMediatorCode.CLICK_land);
+        }
+    }
+    public void transitionMore() {
+        debug("transitionMore", "pantalla", getScreenView().getClass().getSimpleName());
+        if (getScreenView().getClass().getSimpleName().equalsIgnoreCase("PortraitHelloView")) {
+            startNextScreenWithObserver(this, HelloMediatorCode.CLIC_more);
+        }
+        if (getScreenView().getClass().getSimpleName().equalsIgnoreCase("LandscapeHelloView")) {
+            startNextScreenWithObserver(this, HelloMediatorCode.CLICK_more_land);
+        }
+    }
+
+
     @Override
-    public void buttonClickedMore(){
+    public void buttonClickedMore() {
         debug("buttonClicked");
 
         setBtnClicked(true);
         getHelloView().showMessage();
-        startNextScreenWithObserver(this, HelloMediatorCode.CLIC_more);
+        transitionMore();
     }
-    public void changeRotation(int code){
+
+    public void changeRotation(int code) {
         debug("changeRotation", "code", code);
 
         startNextScreenWithFinish(code, true);
     }
+
     @Override
     public void createScreen() {
         debug("createScreen");
@@ -108,10 +132,11 @@ public abstract class HelloPresenter
 
         debug("setScreenState", "clicked", getBtnClicked());
 
-        if(state != null) {
+        if (state != null) {
             HelloState _state = (HelloState) state;
             getHelloModel().setData(_state.getData());
             setBtnClicked(_state.getBtnClicked());
+            _state.set_presentview(view.getSimpleName());
         }
     }
 
@@ -136,20 +161,21 @@ public abstract class HelloPresenter
 
         debug("getNextState", "clicked", getBtnClicked());
 
-        if(view.equals(ByeView.class) && code == HelloMediatorCode.CLICK){
+        if (view.equals(PortraitByeView.class) && code == HelloMediatorCode.CLICK) {
+
             ByeState state = new ByeState();
             state.setData(new ByeData(I_ByeModel.TXT_MSG, I_ByeModel.TXT_BTN));
             return state;
         }
-        if(view.equals(MoreProductsView.class) && code == HelloMediatorCode.CLIC_more){
+        if (view.equals(MoreProductsView.class) && code == HelloMediatorCode.CLIC_more) {
             MoreProductsState state = new MoreProductsState();
             state.setData(new MoreProductsData());
             return state;
         }
-        if((view.equals(LandscapeHelloView.class)
+        if ((view.equals(LandscapeHelloView.class)
                 && code == HelloMediatorCode.hello_landscape)
                 || (view.equals(PortraitHelloView.class)
-                && code == HelloMediatorCode.hello_portrait)){
+                && code == HelloMediatorCode.hello_portrait)) {
             HelloState state = new HelloState();
             state.setData(getHelloModel().getData());
             state.setBtnClicked(getBtnClicked());

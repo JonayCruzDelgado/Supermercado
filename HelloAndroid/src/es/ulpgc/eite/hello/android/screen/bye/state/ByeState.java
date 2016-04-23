@@ -6,9 +6,11 @@ import es.ulpgc.eite.hello.android.screen.bye.data.ByeData;
 public class ByeState implements I_ScreenState {
 
     private ByeData _data;
+    private Boolean _btnClicked;
 
     public ByeState() {
         setData(new ByeData());
+        setBtnClicked(false);
     }
 
     public ByeData getData() {
@@ -19,5 +21,11 @@ public class ByeState implements I_ScreenState {
         _data = data;
     }
 
+    public Boolean getBtnClicked() {
+        return _btnClicked;
+    }
 
+    public void setBtnClicked(Boolean btnClicked) {
+        _btnClicked = btnClicked;
+    }
 }

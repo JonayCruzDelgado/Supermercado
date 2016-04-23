@@ -13,4 +13,6 @@ public class HelloMediatorCode extends MediatorCode {
     public final static int bye_landscape = 905;
     public final static int more_portrait = 906;
     public final static int more_landscape = 907;
+    public final static int CLICK_land = 908;
+    public final static int CLICK_more_land = 909;
 }
