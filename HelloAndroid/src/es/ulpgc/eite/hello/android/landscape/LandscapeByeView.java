@@ -9,6 +9,6 @@ import es.ulpgc.eite.hello.android.screen.bye.view.ByeView;
 public class LandscapeByeView extends ByeView {
     @Override
     public int getLayout() {
-        return R.layout.bye_view_land;
+        return R.layout.bye_view;
     }
 }

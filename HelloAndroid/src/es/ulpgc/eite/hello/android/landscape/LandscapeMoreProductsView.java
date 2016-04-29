@@ -9,6 +9,6 @@ import es.ulpgc.eite.hello.android.screen.moreProducts.view.MoreProductsView;
 public class LandscapeMoreProductsView extends MoreProductsView {
     @Override
     public int getLayout() {
-        return R.layout.more_products_view_land;
+        return R.layout.more_products_view;
     }
 }
