@@ -16,6 +16,16 @@ import es.ulpgc.eite.hello.android.screen.hello.view.HelloView;
 import es.ulpgc.eite.hello.android.screen.moreProducts.model.MoreProductsModel;
 import es.ulpgc.eite.hello.android.screen.moreProducts.presenter.MoreProductsPresenter;
 import es.ulpgc.eite.hello.android.screen.moreProducts.view.MoreProductsView;
+import es.ulpgc.eite.hello.android.screen.category.view.CategoryMasterView;
+import es.ulpgc.eite.hello.android.screen.category.presenter.CategoryMasterPresenter;
+import es.ulpgc.eite.hello.android.screen.category.model.CategoryMasterModel;
+import es.ulpgc.eite.hello.android.database.DatabaseMasterDetail;
+import es.ulpgc.eite.hello.android.screen.product.presenter.ProductMasterPresenter;
+import es.ulpgc.eite.hello.android.screen.product.model.ProductMasterModel;
+import es.ulpgc.eite.hello.android.screen.product.view.ProductMasterView;
+import es.ulpgc.eite.hello.android.screen.detail.view.DetailView;
+import es.ulpgc.eite.hello.android.screen.detail.presenter.DetailPresenter;
+import es.ulpgc.eite.hello.android.screen.detail.model.DetailModel;
 
 public class HelloMediatorConfig extends MediatorConfig {
 
@@ -46,11 +56,20 @@ public class HelloMediatorConfig extends MediatorConfig {
                 LandscapeMoreProductsView.class, LandscapeMoreProductsPresenter.class, MoreProductsModel.class));
         getScreens().add(new MediatorScreen(
                 PortraitMoreProductsView.class, PortraitMoreProductsPresenter.class, MoreProductsModel.class));
+        getScreens().add(new MediatorScreen(
+                CategoryMasterView.class, CategoryMasterPresenter.class,
+                CategoryMasterModel.class, DatabaseMasterDetail.class));
+        getScreens().add(new MediatorScreen(
+                ProductMasterView.class, ProductMasterPresenter.class,
+                ProductMasterModel.class, DatabaseMasterDetail.class));
+        getScreens().add(new MediatorScreen(
+                DetailView.class, DetailPresenter.class,
+                DetailModel.class, DatabaseMasterDetail.class));
     }
 
     private void setHelloTransitionCollection() {
         getTransitions().add(new MediatorTransition(
-                PortraitHelloView.class, PortraitMoreProductsView.class, HelloMediatorCode.CLIC_more));
+                PortraitHelloView.class, CategoryMasterView.class, HelloMediatorCode.CLIC_more));
         getTransitions().add(new MediatorTransition(
                 PortraitHelloView.class, PortraitByeView.class, HelloMediatorCode.CLICK));
 
@@ -62,7 +81,7 @@ public class HelloMediatorConfig extends MediatorConfig {
         getTransitions().add(new MediatorTransition(
                 LandscapeHelloView.class, LandscapeByeView.class, HelloMediatorCode.CLICK_land));
         getTransitions().add(new MediatorTransition(
-                LandscapeHelloView.class, LandscapeMoreProductsView.class, HelloMediatorCode.CLICK_more_land));
+                LandscapeHelloView.class, CategoryMasterView.class, HelloMediatorCode.CLICK_more_land));
 
         getTransitions().add(new MediatorTransition(
                 LandscapeMoreProductsView.class, PortraitMoreProductsView.class, HelloMediatorCode.more_portrait));
@@ -73,5 +92,10 @@ public class HelloMediatorConfig extends MediatorConfig {
                 LandscapeByeView.class, PortraitByeView.class, HelloMediatorCode.bye_portrait));
         getTransitions().add(new MediatorTransition(
                 PortraitByeView.class, LandscapeByeView.class, HelloMediatorCode.bye_landscape));
+        getTransitions().add(new MediatorTransition(CategoryMasterView.class,
+                ProductMasterView.class, HelloMediatorCode.SELECT));
+
+        getTransitions().add(new MediatorTransition(ProductMasterView.class,
+                DetailView.class, HelloMediatorCode.SELECT));
     }
 }

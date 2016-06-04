@@ -46,6 +46,9 @@
                 android:name=".portrait.PortraitMoreProductsView"
                 android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
+        <activity android:name=".screen.product.view.ProductMasterView"/>
+        <activity android:name=".screen.detail.view.DetailView"/>
+        <activity android:name=".screen.category.view.CategoryMasterView"/>
     </application>
 
 </manifest>

@@ -10,4 +10,7 @@
     <string name="bye_message">Txt Msg</string>
     <string name="say_bye_button">Txt Btn</string>
 
+    <string name="data_label">Data label</string>
+    <string name="detail_button">Remove</string>
+
 </resources>
